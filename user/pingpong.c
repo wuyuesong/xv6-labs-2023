@@ -9,7 +9,7 @@ main(int argc, char *argv[]) {
     if (fork() == 0) {
         if (read(p[0], c, 1)) {
             int t = getpid();
-            fprintf(1, "<%d>: received ping\n", t);
+            fprintf(1, "%d: received ping\n", t);
         }
         write(p[1], "1", 1);
         exit(0);
@@ -17,7 +17,7 @@ main(int argc, char *argv[]) {
         write(p[1], "1", 1);
         if (read(p[0], c, 1)) {
             int t = getpid();
-            fprintf(1, "<%d>: received pong\n", t);
+            fprintf(1, "%d: received pong\n", t);
         }
     }
     exit(0);
